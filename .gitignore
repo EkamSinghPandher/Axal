@@ -1,0 +1,4 @@
+/target
+proof.json
+Cargo.lock
+.env

@@ -1,0 +1,17 @@
+{
+    "chain_cfg_1": {
+      "name": "Ethereum",
+      "token0_name": "USDC",
+      "token1_name": "USDT",
+      "rpc_url": "https://mainnet.infura.io/v3/6c4c20e4931844faa747ca3675917bcd",
+      "pool_addr": "0x3416cF6C708Da44DB2624D63ea0AAef7113527C6"
+    },
+      "chain_cfg_2": {
+      "name": "Base",
+      "token0_name": "USDC",
+      "token1_name": "USDT",
+      "rpc_url": "https://mainnet.base.org",
+      "pool_addr": "0xd56da2b74ba826f19015e6b7dd9dae1903e85da1"
+    },
+    "diff_threshold": 1
+}

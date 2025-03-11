@@ -1,0 +1,17 @@
+{
+    "chain_cfg_1": {
+      "name": "Ethereum",
+      "token0_name": "USDC",
+      "token1_name": "USDT",
+      "rpc_url": "https://mainnet.infura.io/v3/6c4c20e4931844faa747ca3675917bcd",
+      "pool_addr": "0x3416cF6C708Da44DB2624D63ea0AAef7113527C6"
+    },
+    "chain_cfg_2": {
+      "name": "Arbitrum",
+      "token0_name": "USDC",
+      "token1_name": "USD₮0",
+      "rpc_url": "https://arb1.arbitrum.io/rpc",
+      "pool_addr": "0xbE3aD6a5669Dc0B8b12FeBC03608860C31E2eef6"
+    },
+    "diff_threshold": 0
+}
