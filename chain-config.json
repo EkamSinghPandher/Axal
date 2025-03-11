@@ -13,5 +13,5 @@
       "rpc_url": "https://arb1.arbitrum.io/rpc",
       "pool_addr": "0xbE3aD6a5669Dc0B8b12FeBC03608860C31E2eef6"
     },
-    "diff_threshold": 0
+    "diff_threshold": 2
 }

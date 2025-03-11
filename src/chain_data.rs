@@ -2,7 +2,7 @@ use alloy::{primitives::U256, providers::{Provider, ProviderBuilder}, sol};
 use eyre::Result;
 use serde::{Deserialize, Serialize};
 
-use crate::utils::convert_float_to_large_u64_9_decimals;
+use crate::utils::convert_float_to_large_u64_8_decimals;
 
 // Codegen from ABI file to interact with the contract.
 sol!(
@@ -35,7 +35,7 @@ pub struct ChainConfig {
 pub struct ChainComparisonConfig{
     pub chain_cfg_1: ChainConfig,
     pub chain_cfg_2: ChainConfig, 
-    pub diff_threshold: u64
+    pub diff_threshold: f64
 }
 
 // Structure to hold proving inputs for price data for proving threashold 
@@ -43,7 +43,7 @@ pub struct ChainComparisonConfig{
 pub struct PriceDataProvingInputs {
     pub price_proving_pis_1: SingleChainProvingInputs,
     pub price_proving_pis_2: SingleChainProvingInputs,
-    pub diff_threshold: u64
+    pub diff_threshold: f64
 }
 
 // Structure to hold proving inputs for price data for a singular chain
@@ -83,7 +83,7 @@ pub async fn get_individual_chain_price_proving_inputs(chain: &ChainConfig)-> Re
     let sqrt_price_u128 = u128::from_be_bytes(sqrt_price_u128_bytes);
 
     let sqrt_price = sqrt_price_u128 as f64 / (1u128 << 96) as f64;
-    let sqrt_price_int = convert_float_to_large_u64_9_decimals(sqrt_price);
+    let sqrt_price_int = convert_float_to_large_u64_8_decimals(sqrt_price);
 
     Ok(SingleChainProvingInputs {
        sqrt_price_x96: sqrt_price_int,

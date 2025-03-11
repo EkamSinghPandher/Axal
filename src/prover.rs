@@ -2,7 +2,7 @@ use eyre::Result;
 use plonky2::{fri::{reduction_strategies::FriReductionStrategy, FriConfig}, iop::{target::Target, witness::{PartialWitness, WitnessWrite}}, plonk::{circuit_builder::CircuitBuilder, circuit_data::CircuitConfig, config::{GenericConfig, PoseidonGoldilocksConfig}, proof::ProofWithPublicInputs, prover::prove}, util::timing::TimingTree};
 use plonky2_field::types::Field;
 
-use crate::{chain_data::{generate_proving_inputs, ChainComparisonConfig, PriceDataProvingInputs}, comparison::compare_gate_unsafe};
+use crate::{chain_data::{generate_proving_inputs, ChainComparisonConfig, PriceDataProvingInputs}, comparison::compare_gate_unsafe, utils::convert_float_to_large_u64_16_decimals};
 
 
 pub const D: usize = 2;
@@ -87,7 +87,7 @@ impl PriceCircuitTargets{
         pw.set_target(self.pool_2_sqrt_price_x96_target, F::from_canonical_u64(proving_inputs.price_proving_pis_2.sqrt_price_x96));
         pw.set_target(self.pool_1_block_number_target, F::from_canonical_u64(proving_inputs.price_proving_pis_1.block_number));
         pw.set_target(self.pool_2_block_number_target, F::from_canonical_u64(proving_inputs.price_proving_pis_2.block_number));
-        pw.set_target(self.diff_threshold, F::from_canonical_u64(proving_inputs.diff_threshold));
+        pw.set_target(self.diff_threshold, F::from_canonical_u64(convert_float_to_large_u64_16_decimals(proving_inputs.diff_threshold)));
 
     }
 }

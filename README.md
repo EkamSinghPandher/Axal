@@ -13,12 +13,23 @@ you should see a portion known as public inputs that looks like this:
   "public_inputs": [
     22021667, // Block number chain 1
     27441518, // Block number chain 2
-    1, //Diff threshold
-    1 // Is statement true
+    1, //Diff threshold (note it will be represented as the diff threshold you specified * 10^16)
+    1 // Is statement true (this is true)
   ]
 ```
 
-We will look mainly at the last value, if it is 1 then the statement is true and if it is 0, then the statement is false. 
+```json
+  "public_inputs": [
+    22021667, // Block number chain 1
+    27441518, // Block number chain 2
+    1, //Diff threshold (note it will be represented as the diff threshold you specified * 10^16)
+    18446744069414584321 // Is statement true (this is false)
+  ]
+```
+
+We will look mainly at the last value, if it is 1 then the statement is true and if it is 18446744069414584321, then the statement is false. 
+If you're curious why 18446744069414584321, its because thats how we represent false, it is the largest value, known as the goldilocks prime and it
+is the underlying prime field of this proof system. 
 
 ## Config Files
 The config files are used to determine the 2 pools on different chains that the USDC price is compared to. Note, we need to ensure that the asset
@@ -43,7 +54,7 @@ The format of the config file is as such:
       "rpc_url": "https://mainnet.base.org",
       "pool_addr": "0xd56da2b74ba826f19015e6b7dd9dae1903e85da1"
     },
-    "diff_threshold": 1 //This is the difference threshold, note it has decimals of 10^16, so 1$ is 10000000000000000 (16 zeroes)
+    "diff_threshold": 1 //This is the difference threshold, it can be a floating point as well
 }
 
 ```
